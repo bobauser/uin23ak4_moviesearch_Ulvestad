@@ -1,3 +1,5 @@
+import { FindMovie } from "./main";
+
 export default function MovieCard({title, releaseYear, imgSrc}) {
     return (
       <div className="movie-card">
@@ -10,10 +12,20 @@ export default function MovieCard({title, releaseYear, imgSrc}) {
     );
   }
 
-export function SearchMovieList({imdbID, title, year, onMovieClick}) {
+export function SearchMovieList({imdbID, title, year}) { //onMovieClick
   
-      <li id={imdbID} className="liResult" onClick={onMovieClick}>
+  // onClick={() => FindMovie(imdbID)}
+
+    <li id={imdbID} className="liResult">
+        <span className="title">{title}</span>
+        <span className="year">{year}</span>
+    </li>
+
+
+  /*
+      <li id={imdbID} className="liResult" /**onClick={onMovieClick}>
           <span className="title">{title}</span>
           <span className="year">{year}</span>
       </li>
+      */
 }

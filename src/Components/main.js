@@ -1,8 +1,8 @@
 import MovieCard from "./moviecard"
 import {useEffect, useState} from 'react'
-import searchList from './searches';
 import SearchHandeler from "./searchhandler";
-import { dritt } from "./state";
+import { ChangeSelectedMovie } from "./state";
+import { useSelectedMovie } from './state';
 
 
 var apikey = 'apikey=941b22ac'
@@ -31,7 +31,8 @@ export async function SearchQuery(searchQuery) {
 export default function MainList() {
     var apiLink = "http://www.omdbapi.com/?apikey=" + apikey + "&"
     const [movies, setMovies] = useState([])
-    const [selectedMovie, setSelectedMovie] = useState([]);
+    const { selectedMovie, setSelectedMovie } = useSelectedMovie();
+
     
     /*function UpdateMovie() {
       
@@ -67,13 +68,18 @@ export default function MainList() {
         setMovies(allMovies);
       };
 
-
       useEffect(() => {
         fetchMovies(setMovies);
             //getMovies()
             fetchMovies() 
       }, []);
 
+      /** 
+      let thing = movies[0]
+      console.log(thing)
+      let visibleElement = (
+        <MovieCard title={thing.Title} releaseYear={thing.Year} imgSrc={thing.Poster} />
+      )*/
       
     return (
         <>
@@ -82,7 +88,7 @@ export default function MainList() {
         
         <main>
 
-        <SearchHandeler children={selectedMovie} />
+        <SearchHandeler children={null} />
 
           {movies?.map((item) => (
               <MovieCard title={item.Title} releaseYear={item.Year} imgSrc={item.Poster} />
@@ -95,13 +101,15 @@ export default function MainList() {
 
 
 export async function FindMovie(imdbID) {
+  const { selectedMovie, setSelectedMovie } = useSelectedMovie();
   console.log(imdbID + " yes")
   const movie = await fetch(`http://www.omdbapi.com/?i=${imdbID}&${apikey}`)
-  console.log(movie)
+  const jsonData = await movie.json();
+  console.log(jsonData)
   let element = (
     <div className="selected-movie">
         <h2>MEGA MIND</h2>
     </div>
   )
-  dritt()
+  ChangeSelectedMovie(element, setSelectedMovie)
 }
