@@ -170,7 +170,7 @@ header {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  max-height: 200px;
+  max-height: 300px;
   width: 61%;
   overflow-y: scroll;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -203,13 +203,34 @@ header {
 
 .search-results .liResult {
   padding: 8px;
+  height: 50px;
+  font-size: 2rem;
+  color: white;
   cursor: pointer;
-  background-color: white;
-  color: black;
   transition-duration: 0.3s;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+  /*img {
+    filter: grayscale(100%) blur(3px);
+
+  }
+
+  &:hover img {
+    filter: grayscale(0%) blur(0);
+    //filter: contrast(130%) brightness(110%) saturate(130%) sharpness(1.2);
+  }*/
+}
+.search-results .liResult:hover {
+  filter: grayscale(0%) blur(0);
+}
+.search-results .liResult:not(:hover) {
+  filter: grayscale(100%) blur(3px);
 }
 .search-results .liResult span {
-  color: gray;
+  filter: none;
+  color: white;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;

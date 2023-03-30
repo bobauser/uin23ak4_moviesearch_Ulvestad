@@ -1,7 +1,7 @@
-import { SearchQuery } from './main.js';
+import { SearchQuery } from './searchresults.js';
 import { useState, useRef } from 'react'
-import { FindMovie } from "./main";
-import { SearchMovieList } from "./moviecard"
+import { FindMovie } from "./searchresults";
+import { SearchResultCard } from "./moviecard"
 import {SetResults, SetBlur} from "./mapsearches"
 
 
@@ -81,7 +81,7 @@ export default function SearchBar() {
             <div className={`search-container2 ${searchResultsVisible ? "" : "hidden"}`}>
                 <ul id="search-results" className="search-results">
                     {searchResults.map((item) => (
-                        <SearchMovieList key={item.imdbID} imdbID={item.imdbID} title={item.Title} year={item.Year} />
+                        <SearchResultCard key={item.imdbID} imdbID={item.imdbID} title={item.Title} year={item.Year} img={item.Poster} />
                     ))}
                 </ul>
             </div>            

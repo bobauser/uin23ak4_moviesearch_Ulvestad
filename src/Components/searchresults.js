@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import SearchHandeler from "./searchhandler";
 import { ChangeSelectedMovie } from "./state";
 import { useSelectedMovie } from './state';
+import SearchBar from "./searchbar";
 
 
 var apikey = 'apikey=941b22ac'
@@ -41,7 +42,9 @@ export default function MainList() {
 
     const getMovies = async (searchQuery) => {
         try {
-          const response = await fetch(`http://www.omdbapi.com/?s=${searchQuery}&r=json&${apikey}`); //type=movie&
+          //const response = await fetch(`http://www.omdbapi.com/?s=${searchQuery}&r=json&${apikey}`); //type=movie&
+          const response = await fetch(`http://www.omdbapi.com/?type=movie&s=${searchQuery}&r=json&${apikey}`);
+          //Fjern kommentaren på øverste API callet og få bare filmer
           if (!response.ok) {
             throw new Error(`Failed to fetch movies for "${searchQuery}"`);
           }
@@ -87,6 +90,7 @@ wqfqfqwfqw
         </article> */
     return (
         <>
+        <SearchBar/>
         <main>
         <SearchHandeler children={null} />
           <section>
