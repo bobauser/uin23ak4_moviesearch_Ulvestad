@@ -14,12 +14,16 @@ export default function SearchBar() {
         const searchText = event.target.value;
         if (searchText.length >= 3) {
             const searchlist = await SearchQuery(searchText);
-            console.log(searchlist);
+            //console.log(searchlist);
             if (searchlist) {
                 //SetResults(searchlist);
                 setSearchResults(searchlist)
             }        
         }
+        /* else {
+            const elements = [<li className="liResult"><span className="title">No Results</span></li>, <li className="liResult"><span className="title">Try Searching something else</span></li>]
+            setSearchResults(elements)
+        } */
     }
 
     function handleSearchInputBlur() {
@@ -48,34 +52,40 @@ export default function SearchBar() {
         button.current.appendChild(effect);
         return effect;
     }
-    
+    /** */
     return (
         <>
-        <div className="search-container">
-            <input type="text" 
-                id="search-input" 
-                className="search-input" 
-                placeholder="Search..." 
-                onChange={handleSearch} 
-                onBlur={handleSearchInputBlur}
-                onFocus={handleSearchInputFocus}/>
+        <header>
+        <section className='coco'>
+            <h1>Welcome</h1>
+            <div className="search-container">
+                <input type="text" 
+                    id="search-input" 
+                    className="search-input" 
+                    placeholder="Search..." 
+                    onChange={handleSearch} 
+                    onBlur={handleSearchInputBlur}
+                    onFocus={handleSearchInputFocus}/>
 
-            <button id="search-button" className="search-button" onClick={buttonEffect} ref={button}>
-            <i className="fa fa-search fa-lg"></i>
-                <span></span>
-            </button>
+                <button id="search-button" className="search-button" onClick={buttonEffect} ref={button}>
+                <i className="fa fa-search fa-lg"></i>
+                    <span></span>
+                </button>
 
-            <div className="circle hidden gray-circle"></div>
-            <div className="circle hidden white-circle"></div>
+                <div className="circle hidden gray-circle"></div>
+                <div className="circle hidden white-circle"></div>
 
-        </div>        
-        <div className={`search-container2 ${searchResultsVisible ? "" : "hidden"}`}>
-            <ul id="search-results" className="search-results">
-                {searchResults.map((item) => (
-                    <SearchMovieList imdbID={item.imdbID} title={item.Title} year={item.Year} />
-                ))}
-            </ul>
-        </div>
+            </div>
+        </section>     
+        
+            <div className={`search-container2 ${searchResultsVisible ? "" : "hidden"}`}>
+                <ul id="search-results" className="search-results">
+                    {searchResults.map((item) => (
+                        <SearchMovieList key={item.imdbID} imdbID={item.imdbID} title={item.Title} year={item.Year} />
+                    ))}
+                </ul>
+            </div>            
+        </header>
         </>
     )
 }

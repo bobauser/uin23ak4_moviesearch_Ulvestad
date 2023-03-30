@@ -80,19 +80,20 @@ export default function MainList() {
       let visibleElement = (
         <MovieCard title={thing.Title} releaseYear={thing.Year} imgSrc={thing.Poster} />
       )*/
-      
+      /*
+
+        <article id="selected-movie" className="movie-empty">
+wqfqfqwfqw
+        </article> */
     return (
         <>
-        <h1>title</h1>
-
-        
         <main>
-
         <SearchHandeler children={null} />
-
-          {movies?.map((item) => (
-              <MovieCard title={item.Title} releaseYear={item.Year} imgSrc={item.Poster} />
-          ))}
+          <section>
+            {movies?.map((item) => (
+                <MovieCard key={item.imdbID} title={item.Title} releaseYear={item.Year} imgSrc={item.Poster}/>
+            ))}
+          </section>
         </main>
         </>
     )

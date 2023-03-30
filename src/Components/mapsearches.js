@@ -1,10 +1,12 @@
+
+/*
 import { useState } from 'react';
 import { SearchMovieList } from './moviecard';
 
 export default function MapS() {
     /**
     const [searchResults, setSearchResults] = useState([]);
-    const [searchResultsVisible, setSearchResultsVisible] = useState(false); */
+    const [searchResultsVisible, setSearchResultsVisible] = useState(false); //
     const { searchResults, setSearchResults, searchResultsVisible, setSearchResultsVisible } = useSearchResults();
 
     return (
@@ -17,7 +19,8 @@ export default function MapS() {
         </div>
     )
 }
-
+*/
+/*
 export const useSearchResults = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchResultsVisible, setSearchResultsVisible] = useState(false);
@@ -33,3 +36,4 @@ export function SetBlur(blur) {
     const { searchResults, setSearchResults, searchResultsVisible, setSearchResultsVisible } = useSearchResults();
     setSearchResultsVisible(blur)
 }
+*/

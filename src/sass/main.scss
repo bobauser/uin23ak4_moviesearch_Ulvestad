@@ -1,4 +1,7 @@
 @import "../sass/partials/animation";
+@import "../sass/partials/moviecard";
+//@import "../sass/partials/carddesignone";
+@import "../sass/partials/searchbar";
 
 .hidden {
     visibility: hidden;
@@ -6,139 +9,25 @@
     transition-duration: .3s;
     position: absolute;
   }
-  
-  .search-container {
-    padding: 10px;
+
+  body {
+    background-color: #302D5B;
+    display: grid;
+  }  
+
+  main {
+    max-width: 70%;
+    margin: 0 auto;
     display: flex;
-    position: relative;
-  
-    // overflow: hidden;
   }
   
-  .search-container2 {
-    padding: 10px;
-    position: relative;
-  
-    // overflow: hidden;
+  #selected-movie {
+    transition-duration: 4ms;
+    justify-self: center;
   }
-  
-  .search-container:active {
-    display: flex;
-    position: relative;
-  }
-  
-  .search-input {
-    animation-name: none;
-    width: 100%;
-    padding: 12px;
-    border-radius: 2rem 0 0 2rem;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    font-size: 18px;
-    background: white;
-    box-sizing: border-box;
-  }
-  
-  .search-button {
-    padding: 1rem;
-    border-radius: 0 1rem 1rem 0;
-    border: 0;
-    background-color: lightgrey;
-    color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition-duration: 0.5s;
-  
-    position: relative;
-    z-index: 1;
-  }
-  
-  .search-button img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .search-results {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    max-height: 200px;
-    width: 100%;
-    overflow-y: scroll;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    position: absolute;
-    transition-duration: 0.5s;
-  
-    /*
-    display: none;
-    */
-  }
-  
-  // Change the scrollbar width and color
-  .search-results::-webkit-scrollbar {
-    width: 20px;
-    background-color: #f5f5f5;
-    border-radius: 0 15px 15px 0;
-  }
-  
-  // Change the scrollbar thumb appearance
-  .search-results::-webkit-scrollbar-thumb {
-    background-color: lightgray;
-    border-radius: 0 15px 15px 0;
-  
-    /*
-    box-shadow: inset 0 0 0 2px #f5f5f5;
-    */
-  }
-  
-  .search-results::-webkit-scrollbar-thumb:active {
-    background-color: #3498db;
-  }
-  
-  .search-results .liResult {
-    padding: 8px;
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    transition-duration: 0.3s;
-  
-    span {
-      color: gray;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      margin-left: 1rem;
-      transition-duration: 0.3s;
-      // border-left: 1px solid black;
-    }
-  
-    &:hover {
-      background-color: lightblue;
-      color: white;
-  
-      span:hover {
-        color: black;
-        background-color: lightcyan;
-      }
-    }
-  }
-  
-  .search-button:hover {
-    background-color: #7C87F9;
-    transition-duration: 0.2s;
-  }
-  
-  .search-button:active {
-    background-color: blue;
-    transition-duration: 0.05s;
-    transform: scale(1.2);
-  }
-  
-  .button span {
-    position: relative;
-    z-index: 1;
+
+  #selected-movie .movie-empty {
+    border-bottom: #242244 10px solid;
   }
   
   
