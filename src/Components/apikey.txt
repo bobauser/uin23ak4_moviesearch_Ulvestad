@@ -1,0 +1,83 @@
+APPIIII KEY HEEEEER
+
+941b22ac
+http://www.omdbapi.com/?apikey=[yourkey]&
+
+
+import { SearchQuery } from './main.js';
+import { useState, useRef, useEffect } from 'react';
+import ListRenderer from './ListRenderer';
+
+export default function SearchBar() {
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearchResultsVisible, setIsSearchResultsVisible] = useState(false);
+  const inputRef = useRef(null);
+  const searchResultsRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target) &&
+        searchResultsRef.current &&
+        !searchResultsRef.current.contains(event.target)
+      ) {
+        setIsSearchResultsVisible(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [inputRef, searchResultsRef]);
+
+  async function handleSearch(event) {
+    const searchText = event.target.value;
+
+    if (searchText.length >= 3) {
+      const searchList = await SearchQuery(searchText);
+
+      if (searchList) {
+        setSearchResults(searchList);
+        setIsSearchResultsVisible(true);
+      }
+    } else {
+      setIsSearchResultsVisible(false);
+      setSearchResults([]);
+    }
+  }
+
+  return (
+    <>
+      <div className="search-container" ref={inputRef}>
+        <input
+          type="text"
+          id="search-input"
+          className="search-input"
+          placeholder="Search..."
+          onChange={handleSearch}
+          onFocus={() => setIsSearchResultsVisible(true)}
+        />
+
+        <button className="search-button">
+          <i className="fa fa-search fa-lg"></i>
+          <span></span>
+        </button>
+
+        <div className="circle hidden gray-circle"></div>
+        <div className="circle hidden white-circle"></div>
+      </div>
+
+      <div
+        className={`search-container2 search-results ${
+          isSearchResultsVisible ? '' : 'hidden'
+        }`}
+        ref={searchResultsRef}
+      >
+        <ListRenderer itemList={searchResults} />
+      </div>
+    </>
+  );
+}

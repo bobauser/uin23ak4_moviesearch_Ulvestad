@@ -1,0 +1,33 @@
+@import "../sass/partials/animation";
+@import "../sass/partials/moviecard";
+//@import "../sass/partials/carddesignone";
+@import "../sass/partials/searchbar";
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: .3s;
+    position: absolute;
+  }
+
+  body {
+    background-color: #302D5B;
+    display: grid;
+  }  
+
+  main {
+    max-width: 70%;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  #selected-movie {
+    transition-duration: 4ms;
+    justify-self: center;
+  }
+
+  #selected-movie .movie-empty {
+    border-bottom: #242244 10px solid;
+  }
+  
+  
